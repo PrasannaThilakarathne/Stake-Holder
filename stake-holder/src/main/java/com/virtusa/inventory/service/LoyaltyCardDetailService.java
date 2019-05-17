@@ -1,6 +1,7 @@
 package com.virtusa.inventory.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.virtusa.inventory.modal.LoyaltyCardDetail;
 
@@ -10,6 +11,6 @@ public interface LoyaltyCardDetailService {
 	
 	public List<LoyaltyCardDetail> fetchAll();
 	
-	public LoyaltyCardDetail update(LoyaltyCardDetail cardDetail);
+	public Optional<LoyaltyCardDetail> findOne(Integer id);
 
 }

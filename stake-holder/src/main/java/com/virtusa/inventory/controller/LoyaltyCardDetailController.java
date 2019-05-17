@@ -1,6 +1,7 @@
 package com.virtusa.inventory.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +32,15 @@ public class LoyaltyCardDetailController {
 		return ResponseEntity.ok(cardDetailService.save(cardDetail));
 	}
 
-	@RequestMapping(value = "/loyaltycard", method = RequestMethod.PUT)
-	public ResponseEntity<LoyaltyCardDetail> update(@RequestBody LoyaltyCardDetail cardDetail) {
-		return ResponseEntity.ok(cardDetailService.update(cardDetail));
-	}
+	@RequestMapping(value = "/loyaltycard/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<LoyaltyCardDetail> update(@PathVariable Integer id,
+			@RequestBody LoyaltyCardDetail cardDetail) {
+		Optional<LoyaltyCardDetail> optionalLoyaltyCard = cardDetailService.findOne(id);
+		if (!optionalLoyaltyCard.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
 
+		return ResponseEntity.ok(cardDetailService.save(cardDetail));
+	}
 
 }

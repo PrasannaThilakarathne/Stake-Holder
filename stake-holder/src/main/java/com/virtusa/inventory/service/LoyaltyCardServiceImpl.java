@@ -1,6 +1,7 @@
 package com.virtusa.inventory.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,9 +26,8 @@ public class LoyaltyCardServiceImpl implements LoyaltyCardDetailService {
 	}
 
 	@Override
-	public LoyaltyCardDetail update(LoyaltyCardDetail cardDetail) {
-		
-		return loyaltyCard.save(cardDetail);
+	public Optional<LoyaltyCardDetail> findOne(Integer id) {
+		return loyaltyCard.findById(id);
 	}
 
 }
