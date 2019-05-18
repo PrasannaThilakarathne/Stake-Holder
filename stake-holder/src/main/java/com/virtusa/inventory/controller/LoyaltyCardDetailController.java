@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +16,7 @@ import com.virtusa.inventory.modal.LoyaltyCardDetail;
 import com.virtusa.inventory.service.LoyaltyCardDetailService;
 
 @RestController
-@RequestMapping("/loyaltycarddetail")
+@RequestMapping("/loyalty")
 
 public class LoyaltyCardDetailController {
 
@@ -40,7 +41,25 @@ public class LoyaltyCardDetailController {
 			return ResponseEntity.notFound().build();
 		}
 
-		return ResponseEntity.ok(cardDetailService.save(cardDetail));
+		LoyaltyCardDetail cardUpadated = optionalLoyaltyCard.get();
+		cardUpadated.setBalance(cardDetail.getBalance());
+		cardUpadated.setCategory(cardDetail.getCategory());
+		cardUpadated.setCustomerDetail(cardDetail.getCustomerDetail());
+		
+		return ResponseEntity.ok(cardDetailService.save(cardUpadated));
 	}
+	
+	@RequestMapping(value = "/loyaltycard/{id}", method = RequestMethod.DELETE)
+	public HttpStatus delete(@PathVariable Integer id) {
+		Optional<LoyaltyCardDetail> optionalLoyaltyCard = cardDetailService.findOne(id);
+		if (!optionalLoyaltyCard.isPresent()) {
+			return HttpStatus.NOT_FOUND;
+		}
+		
+		cardDetailService.delete(id);
+		return HttpStatus.OK;
+	}
+	
+	
 
 }

@@ -12,5 +12,7 @@ public interface LoyaltyCardDetailService {
 	public List<LoyaltyCardDetail> fetchAll();
 	
 	public Optional<LoyaltyCardDetail> findOne(Integer id);
+	
+	public void delete(Integer id);
 
 }
