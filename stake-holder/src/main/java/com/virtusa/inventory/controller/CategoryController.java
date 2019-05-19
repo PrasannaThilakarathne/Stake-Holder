@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtusa.inventory.exception.ObjectNotFoundException;
 import com.virtusa.inventory.modal.Category;
 import com.virtusa.inventory.service.CategoryService;
 
@@ -30,7 +31,7 @@ public class CategoryController {
 	public ResponseEntity<Category> fetchOne(@PathVariable Integer id) {
 		Optional<Category> optionalCategory = categoryService.findOne(id);
 		if (!optionalCategory.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ObjectNotFoundException("id - " + id);
 		}
 		return ResponseEntity.ok(optionalCategory.get());
 	}
@@ -44,7 +45,7 @@ public class CategoryController {
 	public ResponseEntity<Category> update(@PathVariable Integer id,@RequestBody Category category) {
 		Optional<Category> optionalCategory = categoryService.findOne(id);
 		if (!optionalCategory.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ObjectNotFoundException("id - " + id);
 		}
 		
 		Category categoryUpdated = optionalCategory.get();
@@ -59,7 +60,7 @@ public class CategoryController {
 	public HttpStatus delete(@PathVariable Integer id) {
 		Optional<Category> optionalCategory = categoryService.findOne(id);
 		if (!optionalCategory.isPresent()) {
-			return HttpStatus.NOT_FOUND;
+			throw new ObjectNotFoundException("id - " + id);
 		}
 		
 		categoryService.delete(id);

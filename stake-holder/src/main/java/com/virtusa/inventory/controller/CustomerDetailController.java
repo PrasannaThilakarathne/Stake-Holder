@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtusa.inventory.exception.ObjectNotFoundException;
 import com.virtusa.inventory.modal.CustomerDetail;
 import com.virtusa.inventory.modal.LoyaltyCardDetail;
 import com.virtusa.inventory.service.CustomerDetailService;
@@ -37,7 +38,7 @@ public class CustomerDetailController {
 	public ResponseEntity<CustomerDetail> fetchOne(@PathVariable Integer id) {
 		Optional<CustomerDetail> optionalCustomer = customerDetailService.findOne(id);
 		if (!optionalCustomer.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ObjectNotFoundException("id - " + id);
 		}
 
 		return ResponseEntity.ok(optionalCustomer.get());
@@ -47,7 +48,7 @@ public class CustomerDetailController {
 	public ResponseEntity<LoyaltyCardDetail> fetchCustomerLoyalty(@PathVariable Integer id) {
 		Optional<CustomerDetail> optionalCustomer = customerDetailService.findOne(id);
 		if (!optionalCustomer.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ObjectNotFoundException("id - " + id);
 		}
 
 		return ResponseEntity.ok(optionalCustomer.get().getCardDetail());
@@ -59,15 +60,15 @@ public class CustomerDetailController {
 		Optional<CustomerDetail> optionalCustomer = customerDetailService.findOne(id);
 
 		if (!optionalCustomer.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ObjectNotFoundException("id - " + id);
 		}
-		
+
 		CustomerDetail customerUpdated = optionalCustomer.get();
 		customerUpdated.setName(customerDetail.getName());
 		customerUpdated.setAddress(customerDetail.getAddress());
 		customerUpdated.setCardDetail(customerDetail.getCardDetail());
 		customerUpdated.setTelephone(customerDetail.getTelephone());
-		
+
 		return ResponseEntity.ok(customerDetailService.save(customerUpdated));
 	}
 
@@ -77,7 +78,7 @@ public class CustomerDetailController {
 		Optional<CustomerDetail> optionalCustomer = customerDetailService.findOne(id);
 
 		if (!optionalCustomer.isPresent()) {
-			return HttpStatus.NOT_FOUND;
+			throw new ObjectNotFoundException("id - " + id);
 		}
 		customerDetailService.delete(id);
 		return HttpStatus.OK;
