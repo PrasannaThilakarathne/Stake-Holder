@@ -11,12 +11,13 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	Integer id;
 
 	@NotNull
@@ -26,6 +27,7 @@ public class Category {
 	Integer pointRange;
 
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	@JsonIgnore
 	List<LoyaltyCard> loyalitycard;
 
 	public Integer getId() {
