@@ -40,11 +40,11 @@ public class Category {
 		this.type = type;
 	}
 
-	public Integer getPointCoverage() {
+	public Integer getPointRange() {
 		return pointRange;
 	}
 
-	public void setPointCoverage(Integer pointCoverage) {
+	public void setPointRange(Integer pointCoverage) {
 		this.pointRange = pointCoverage;
 	}
 

@@ -17,8 +17,8 @@ public class LoyaltyCard {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	Integer id;
+	
 	String name;
 	String number;
 	Double pointBalance;

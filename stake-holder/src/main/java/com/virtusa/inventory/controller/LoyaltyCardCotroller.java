@@ -1,6 +1,5 @@
 package com.virtusa.inventory.controller;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.virtusa.inventory.modal.Category;
 import com.virtusa.inventory.modal.LoyaltyCard;
 import com.virtusa.inventory.service.LoyaltyCardService;
 
@@ -28,10 +26,6 @@ public class LoyaltyCardCotroller {
 
 	@RequestMapping(value = "/card", method = RequestMethod.POST)
 	public ResponseEntity<LoyaltyCard> create(@Valid @RequestBody LoyaltyCard loyaltyCard) {
-		Category c = loyaltyCard.getCategory();
-		if(c==null) {
-			System.out.println("Null value");
-		}
 		return ResponseEntity.ok(loyaltyCardService.save(loyaltyCard));
 	}
 
