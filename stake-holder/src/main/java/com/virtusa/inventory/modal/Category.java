@@ -48,11 +48,4 @@ public class Category {
 		this.loyalitycard = loyalitycard;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 }
