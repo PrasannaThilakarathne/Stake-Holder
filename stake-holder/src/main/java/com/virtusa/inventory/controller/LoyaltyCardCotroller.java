@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtusa.inventory.exception.LoyaltyCardNotFoundException;
 import com.virtusa.inventory.modal.LoyaltyCard;
 import com.virtusa.inventory.service.LoyaltyCardService;
 
@@ -38,7 +39,7 @@ public class LoyaltyCardCotroller {
 	public ResponseEntity<LoyaltyCard> fetchOne(@PathVariable Integer id) {
 		Optional<LoyaltyCard> optionalLoyalty = loyaltyCardService.findOne(id);
 		if (!optionalLoyalty.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new LoyaltyCardNotFoundException("id-"+id);
 		}
 		return ResponseEntity.ok(loyaltyCardService.findOne(id).get());
 	}
@@ -49,14 +50,8 @@ public class LoyaltyCardCotroller {
 		if (!optionalLoyalty.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-
-		LoyaltyCard loyaltyCardUpdated = optionalLoyalty.get();
-		loyaltyCardUpdated.setName(loyaltyCard.getName());
-		loyaltyCardUpdated.setNumber(loyaltyCard.getNumber());
-		loyaltyCardUpdated.setPointBalance(loyaltyCard.getPointBalance());
-		loyaltyCardUpdated.setIssuedDate(loyaltyCard.getIssuedDate());
-		loyaltyCardUpdated.setExpiryDate(loyaltyCard.getExpiryDate());
-		loyaltyCardUpdated.setCategory(loyaltyCard.getCategory());
+			
+		loyaltyCard.setId(id);
 		return ResponseEntity.ok(loyaltyCardService.save(loyaltyCard));
 	}
 
