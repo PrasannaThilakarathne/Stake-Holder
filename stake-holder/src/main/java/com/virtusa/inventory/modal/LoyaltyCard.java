@@ -27,7 +27,7 @@ public class LoyaltyCard {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
-	@JsonIgnore
+	//@JsonIgnore
 	Category category;
 
 	public String getName() {
