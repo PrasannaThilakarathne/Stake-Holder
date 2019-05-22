@@ -12,8 +12,8 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
+	
 	@NotNull(message = "Address can't be empty")
 	@Size(min = 3)
 	private String addressLine1;
