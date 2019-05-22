@@ -9,10 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -48,13 +47,15 @@ public class Customer {
 
 	@NotNull(message = "Email can't be empty")
 	@Email(message = "Email is invalid")
-	@Column(unique = true)
+//	@Column(unique = true)
 	private String email;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	Address address;
 
 	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_id", referencedColumnName = "id")
 	LoyaltyCard card;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)

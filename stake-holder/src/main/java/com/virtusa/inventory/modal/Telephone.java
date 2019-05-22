@@ -27,8 +27,8 @@ public class Telephone {
 	private String type;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn
-	@JsonIgnore
+	@JoinColumn(name = "customer_id", referencedColumnName = "id")
+//	@JsonIgnore
 	Customer customer;
 
 	public Integer getId() {
