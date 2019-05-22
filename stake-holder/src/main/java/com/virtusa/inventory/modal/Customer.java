@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Customer {
@@ -16,13 +18,29 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
+	@NotNull
 	private Integer id;
+	
+	@NotNull
 	private String gender;
+	
 	private String occupation;
+	
+	@NotNull
 	private String salutation;
+	
+	@Size(min = 8,max = 8 )
 	private String dateOfBirth;
+	
+	@NotNull
+	@Size(min = 3)
 	private String fName;
+	
+	@NotNull
+	@Size(min = 3)
 	private String lName;
+	
+	@NotNull
 	private	String email;
 	
 	@OneToOne(cascade = CascadeType.ALL)
