@@ -18,8 +18,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	@NotNull
+	//@NotNull
 	private Integer id;
 
 	@NotNull
@@ -30,7 +29,7 @@ public class Customer {
 	@NotNull
 	private String salutation;
 
-	@Size(min = 8, max = 8)
+	//@Size(min = 8, max = 8)
 	private Date dateOfBirth;
 
 	@NotNull
