@@ -18,12 +18,10 @@ public class Category {
 
 	Integer id;
 	String type;
-	Integer points;
+	Integer pointCoverage;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	List<LoyaltyCardDetail> cardDetails;
-	
-	
+	List<LoyaltyCard> loyalitycard;
 	
 	public Integer getId() {
 		return id;
@@ -37,19 +35,22 @@ public class Category {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Integer getPoints() {
-		return points;
+	public Integer getPointCoverage() {
+		return pointCoverage;
 	}
-	public void setPoints(Integer points) {
-		this.points = points;
+	public void setPointCoverage(Integer pointCoverage) {
+		this.pointCoverage = pointCoverage;
+	}
+	public List<LoyaltyCard> getLoyalitycard() {
+		return loyalitycard;
+	}
+	public void setLoyalitycard(List<LoyaltyCard> loyalitycard) {
+		this.loyalitycard = loyalitycard;
 	}
 	
-	public List<LoyaltyCardDetail> getCardDetails() {
-		return cardDetails;
-	}
-	public void setCardDetails(List<LoyaltyCardDetail> cardDetails) {
-		this.cardDetails = cardDetails;
-	}
+	
+	
+	
 	
 	
 	
