@@ -6,8 +6,9 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-
+import com.virtusa.inventory.exception.CategoryAlreadyExistException;
 import com.virtusa.inventory.modal.Category;
 import com.virtusa.inventory.repository.CategoryRepository;
 
@@ -36,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public void delete(Integer id) {
 		categoryRepository.deleteById(id);
 	}
-	
+
 	@Override
 	public Optional<Category> findById(Integer id) {
 		return categoryRepository.findById(id);

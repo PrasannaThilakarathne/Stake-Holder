@@ -3,9 +3,12 @@ package com.virtusa.inventory.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.virtusa.inventory.modal.Telephone;
 import com.virtusa.inventory.repository.TelephoneRepository;
 
+@Service
 public class TelephoneServiceImpl implements TelephoneService {
 
 	TelephoneRepository telephoneRepository;

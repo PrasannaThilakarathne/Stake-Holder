@@ -3,9 +3,12 @@ package com.virtusa.inventory.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.virtusa.inventory.modal.Address;
 import com.virtusa.inventory.repository.AddressRepository;
 
+@Service
 public class AddressServiceImpl implements AddressService {
 
 	AddressRepository addressRepository;
