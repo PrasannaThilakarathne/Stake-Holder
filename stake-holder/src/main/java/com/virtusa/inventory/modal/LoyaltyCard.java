@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,17 +22,32 @@ public class LoyaltyCard {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-	Integer id;
-	String name;
-	String number;
-	Double pointBalance;
-	Date issuedDate;
-	Date expiryDate;
+	@NotNull(message = "Name can not be empty")
+	@Size(min = 3)
+	private String name;
+
+	@NotNull(message = "Number can not be empty")
+	@Size(min = 8, max = 8)
+	private String number;
+
+	private Double pointBalance;
+
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date issuedDate;
+
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date expiryDate;
+
+	@OneToOne(mappedBy = "card")
+	private Customer cutomer;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn
-	@JsonIgnore
+	@JoinColumn(name = "category_id", referencedColumnName = "id")
+	// @JsonIgnore
 	Category category;
 
 	public String getName() {

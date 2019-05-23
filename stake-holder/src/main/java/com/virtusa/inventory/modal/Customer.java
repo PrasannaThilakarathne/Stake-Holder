@@ -4,25 +4,28 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	@NotNull
 	private Integer id;
 
-	@NotNull
+	@NotNull(message = "Gender must not be empty")
 	private String gender;
 
 	private String occupation;
@@ -30,24 +33,29 @@ public class Customer {
 	@NotNull
 	private String salutation;
 
-	@Size(min = 8, max = 8)
+	@NotNull(message = "Birth Date must not be empty")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateOfBirth;
 
-	@NotNull
-	@Size(min = 3, message = "First Name must not be empty")
-	private String fName;
+	@NotNull(message = "First Name must not be empty")
+	@Size(min = 3)
+	private String firstName;
 
-	@NotNull
-	@Size(min = 3, message = "Last Name must not be empty")
-	private String lName;
+	@NotNull(message = "Last Name must not be empty")
+	@Size(min = 3)
+	private String lastName;
 
-	@NotNull
+	@NotNull(message = "Email can't be empty")
+	@Email(message = "Email is invalid")
+//	@Column(unique = true)
 	private String email;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	Address address;
 
 	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_id", referencedColumnName = "id")
 	LoyaltyCard card;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
@@ -94,19 +102,19 @@ public class Customer {
 	}
 
 	public String getfName() {
-		return fName;
+		return firstName;
 	}
 
 	public void setfName(String fName) {
-		this.fName = fName;
+		this.firstName = fName;
 	}
 
 	public String getlName() {
-		return lName;
+		return lastName;
 	}
 
 	public void setlName(String lName) {
-		this.lName = lName;
+		this.lastName = lName;
 	}
 
 	public String getEmail() {
