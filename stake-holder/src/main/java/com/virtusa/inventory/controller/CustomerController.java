@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.inventory.modal.Customer;
+import com.virtusa.inventory.modal.LoyaltyCard;
 import com.virtusa.inventory.service.CustomerService;
 
 @RestController
@@ -27,17 +28,28 @@ public class CustomerController {
 
 	@RequestMapping(value = "/details", method = RequestMethod.POST)
 	public ResponseEntity<Customer> save(@Valid @RequestBody Customer customer) {
-//		if(customer==null) {
-//			System.out.println("customer is nulll");
-//		}
+		if (customer == null) {
+			System.out.println("customer is nulll");
+		}
 		return ResponseEntity.ok(customerService.save(customer));
 	}
 
-	@RequestMapping(value = "/fetchdetails", method = RequestMethod.GET)
+	@RequestMapping(value = "/details/{id}/loyalty", method = RequestMethod.POST)
+	public ResponseEntity<Customer> createLoyalty(@PathVariable Integer id,
+			@Valid @RequestBody LoyaltyCard loyaltyCard) {
+		Optional<Customer> optionalCustomer = customerService.findOne(id);
+		if (optionalCustomer.isPresent()) {
+
+		}
+		Customer customerUpdated = optionalCustomer.get();
+		customerUpdated.setCard(loyaltyCard);
+		return ResponseEntity.ok(customerService.save(customerUpdated));
+	}
+
+	@RequestMapping(value = "/details", method = RequestMethod.GET)
 	public ResponseEntity<List<Customer>> fetchAll() {
 		return ResponseEntity.ok(customerService.fetchAll());
 	}
-	
 
 	@RequestMapping(value = "/details/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Customer> update(@Valid @PathVariable Integer id, @RequestBody Customer customer) {
@@ -46,28 +58,13 @@ public class CustomerController {
 		if (!optionalCustomer.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-		Customer customerupdated = optionalCustomer.get();
-		customerupdated.setfName(customer.getfName());
-		customerupdated.setlName(customer.getlName());
-		customerupdated.setAddress(customer.getAddress());
-		customerupdated.setCard(customer.getCard());
-		customerupdated.setDateOfBirth(customer.getDateOfBirth());
-		customerupdated.setGender(customer.getGender());
-		customerupdated.setEmail(customer.getEmail());
-		customerupdated.setSalutation(customer.getSalutation());
-		customerupdated.setOccupation(customer.getOccupation());
-
-		return ResponseEntity.ok(customerService.save(customerupdated));
+		customer.setId(id);
+		return ResponseEntity.ok(customerService.save(customer));
 
 	}
+
 	@RequestMapping(value = "/details/{id}", method = RequestMethod.DELETE)
 	public HttpStatus delete(@Valid @PathVariable Integer id) {
-
-		Optional<Customer> optionalCustomer = customerService.findOne(id);
-
-		if (!optionalCustomer.isPresent()) {
-			return HttpStatus.NOT_FOUND;
-		}
 		customerService.deleteCustomer(id);
 		return HttpStatus.OK;
 	}

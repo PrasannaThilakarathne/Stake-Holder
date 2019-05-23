@@ -11,16 +11,18 @@ import com.virtusa.inventory.modal.Telephone;
 import com.virtusa.inventory.repository.CustomerRepository;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
 
 	public Customer save(Customer customer) {
-		for (Telephone telephone : customer.getTelephone()) {
-			telephone.setCustomer(customer);
-
+		if (customer.getTelephone() != null) {
+			for (Telephone telephone : customer.getTelephone()) {
+				telephone.setCustomer(customer);
+			}
 		}
+
 		return customerRepository.save(customer);
 
 	}
