@@ -3,6 +3,7 @@ package com.virtusa.inventory.modal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,7 @@ public class Category {
 	Integer id;
 
 	@NotNull
+	@Column(unique = true)
 	String type;
 
 	@NotNull
