@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,7 +22,6 @@ public class LoyaltyCard {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
 
 	@NotNull(message = "Name can not be empty")
@@ -42,9 +42,17 @@ public class LoyaltyCard {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date expiryDate;
 
+	@OneToOne(mappedBy = "card")
+	private Customer cutomer;
+
 	@ManyToOne(cascade = CascadeType.ALL)
+<<<<<<< HEAD
 	@JoinColumn
 	@JsonIgnore
+=======
+	@JoinColumn(name = "category_id", referencedColumnName = "id")
+	// @JsonIgnore
+>>>>>>> 835f9c64f67792ac4cc4043987b9505f51111302
 	Category category;
 
 	public String getName() {

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b6d384ec-a8b1-4d12-806a-6f8df2a9fa2e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/catalina.policy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/catalina.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/jmxremote.access" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/jmxremote.password" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/server.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/tomcat-users.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/Servers/Pivotal tc Server Developer Edition v4.0-config/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/exception/CategoryAlreadyExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/exception/CategoryDoesNotExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/exception/CustomerNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servers/.settings/org.eclipse.wst.server.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/Servers/.settings/org.eclipse.wst.server.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/controller/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/controller/TelephoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/controller/TelephoneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/exception/CustomizedResponseEntityExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/exception/CustomizedResponseEntityExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/modal/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/modal/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/modal/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/modal/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/modal/Telephone.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/modal/Telephone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/AddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/TelephoneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/java/com/virtusa/inventory/service/TelephoneServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stake-holder/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/stake-holder/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="49" />
+    <option name="y" value="27" />
+    <option name="width" value="1317" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6d384ec-a8b1-4d12-806a-6f8df2a9fa2e" name="Default Changelist" comment="" />
+      <created>1558599470949</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558599470949</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="49" y="25" width="1317" height="743" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="DB Browser" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24940991" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="DB Execution Console" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+</project>
