@@ -58,7 +58,7 @@ public class CustomerController {
 
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
 		if (!optionalCustomer.isPresent()) {
-			throw new CustomerNotFoundException("id"+ id);
+			throw new CustomerNotFoundException("Customer not found");
 			//return ResponseEntity.notFound().build();
 		}
 		customer.setId(id);
