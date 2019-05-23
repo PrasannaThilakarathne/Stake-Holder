@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +24,7 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "Gender must not be empty")
+	@NotNull(message = "Gender must notNOT_BE_NULL  be empty")
 	private String gender;
 
 	private String occupation;
@@ -37,7 +36,7 @@ public class Customer {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateOfBirth;
 
-	@NotNull(message = "First Name must not be empty")
+	@NotNull(message = "Firs_NOT_BE_NULLt Name must not be empty")
 	@Size(min = 3)
 	private String firstName;
 
@@ -49,13 +48,12 @@ public class Customer {
 	@Email(message = "Email is invalid")
 //	@Column(unique = true)
 	private String email;
-
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	Address address;
 
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "card_id", referencedColumnName = "id")
+	@JoinColumn(name = "card_id", referencedColumnName = "id")
 	LoyaltyCard card;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
@@ -129,7 +127,7 @@ public class Customer {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(Address a_NOT_BE_NULLddress) {
 		this.address = address;
 	}
 
