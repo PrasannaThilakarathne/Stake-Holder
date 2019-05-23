@@ -25,12 +25,12 @@ public class CategoryController {
 	@Autowired
 	CategoryService categoryService;
 
-	@RequestMapping(value = "/details", method = RequestMethod.GET)
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public ResponseEntity<List<Category>> fetchAll() {
 		return ResponseEntity.ok(categoryService.fetchAll());
 	}
 
-	@RequestMapping(value = "/details", method = RequestMethod.POST)
+	@RequestMapping(value = "/detail", method = RequestMethod.POST)
 	public ResponseEntity<Category> save(@Valid @RequestBody Category category) {
 
 		boolean matched = false;
@@ -58,7 +58,7 @@ public class CategoryController {
 
 	}
 
-	@RequestMapping(value = "/details/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/detail/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Category> update(@PathVariable Integer id, @Valid @RequestBody Category category) {
 
 		boolean matched = false;
@@ -79,13 +79,13 @@ public class CategoryController {
 			newCategory.setPointRange(category.getPointRange());
 			newCategory.setType(category.getType().toLowerCase());
 
-			return ResponseEntity.ok(categoryService.update(newCategory));
+			return ResponseEntity.ok(categoryService.save(newCategory));
 		} else {
 			throw new CategoryDoesNotExistException("id-" + id);
 		}
 	}
 
-	@RequestMapping(value = "/details/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/detail/{id}", method = RequestMethod.DELETE)
 	public HttpStatus delete(@PathVariable Integer id) {
 
 		categoryService.delete(id);
