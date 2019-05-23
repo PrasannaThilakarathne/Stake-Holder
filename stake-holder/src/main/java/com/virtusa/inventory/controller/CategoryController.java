@@ -1,7 +1,6 @@
 package com.virtusa.inventory.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.inventory.exception.CategoryAlreadyExistException;
 import com.virtusa.inventory.exception.CategoryDoesNotExistException;
-import com.virtusa.inventory.exception.LoyaltyCardNotFoundException;
 import com.virtusa.inventory.modal.Category;
 import com.virtusa.inventory.service.CategoryService;;
 

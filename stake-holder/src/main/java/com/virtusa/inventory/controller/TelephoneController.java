@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,8 +45,8 @@ public class TelephoneController {
 	}
 
 	@RequestMapping(value = "/telephone", method = RequestMethod.DELETE)
-	public ResponseEntity delete(@PathVariable Integer id) {
+	public HttpStatus delete(@PathVariable Integer id) {
 		telephoneService.delete(id);
-		return ResponseEntity.ok().build();
+		return HttpStatus.OK;
 	}
 }
