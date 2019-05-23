@@ -10,7 +10,9 @@ public class AddressServiceImpl implements AddressService {
 
 	AddressRepository addressRepository;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.virtusa.inventory.service.AddressService#fetchAll()
 	 */
 	@Override
@@ -18,17 +20,23 @@ public class AddressServiceImpl implements AddressService {
 		return addressRepository.findAll();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.virtusa.inventory.service.AddressService#save(com.virtusa.inventory.modal.Address)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.virtusa.inventory.service.AddressService#save(com.virtusa.inventory.
+	 * modal.Address)
 	 */
 	@Override
 	public Address save(Address address) {
 		return addressRepository.save(address);
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see com.virtusa.inventory.service.AddressService#delete(java.lang.Integer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.virtusa.inventory.service.AddressService#delete(java.lang.Integer)
 	 */
 	@Override
 	public void delete(Integer id) {

@@ -1,6 +1,9 @@
 package com.virtusa.inventory.controller;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtusa.inventory.exception.TelephoneNotFoundException;
 import com.virtusa.inventory.modal.Telephone;
 import com.virtusa.inventory.service.TelephoneService;
 
@@ -30,9 +34,13 @@ public class TelephoneController {
 		return ResponseEntity.ok(telephoneService.save(telephone));
 	}
 
-	@RequestMapping(value = "/telephone", method = RequestMethod.PUT)
-	public ResponseEntity<Telephone> update(@RequestBody Telephone telephone) {
-		return ResponseEntity.ok(telephoneService.update(telephone));
+	@RequestMapping(value = "/telephone/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Telephone> update(@PathVariable Integer id, @Valid @RequestBody Telephone telephone) {
+		Optional<Telephone> optionalTelephone = telephoneService.findOne(id);
+		if(!optionalTelephone.isPresent()){
+			throw new TelephoneNotFoundException("ID" +id);
+		}
+		return ResponseEntity.ok(telephoneService.save(telephone));
 	}
 
 	@RequestMapping(value = "/telephone", method = RequestMethod.DELETE)

@@ -1,6 +1,9 @@
 package com.virtusa.inventory.controller;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtusa.inventory.exception.AddressNotFoundException;
 import com.virtusa.inventory.modal.Address;
 import com.virtusa.inventory.service.AddressService;
 
@@ -29,9 +33,13 @@ public class AddressController {
 		return ResponseEntity.ok(addressService.save(address));
 	}
 
-	@RequestMapping(value = "/address", method = RequestMethod.PUT)
-	public ResponseEntity<Address> update(@RequestBody Address address) {
-		return ResponseEntity.ok(addressService.update(address));
+	@RequestMapping(value = "/address/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Address> update(@PathVariable Integer id, @Valid @RequestBody Address address) {
+		Optional<Address> optionalAddress = addressService.findOne(id);
+		if(!optionalAddress.isPresent()){
+			throw new AddressNotFoundException("id" + id);
+		}
+		return ResponseEntity.ok(addressService.save(address));
 	}
 
 	@RequestMapping(value = "/address/{id}", method = RequestMethod.DELETE)
