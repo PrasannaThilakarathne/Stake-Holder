@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.virtusa.inventory.modal.LoyaltyCard;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -53,7 +54,14 @@ public class LoyaltyCardControllerTest {
 		loyaltyCard.setPointBalance(10.0);
 		loyaltyCard.setIssuedDate(new Date());
 		loyaltyCard.setExpiryDate(new Date());
-        mockMvc.perform(MockMvcRequestBuilders.post("/loyalty/card"))
+		
+		// Convert LoyaltyCard object into String
+		ObjectMapper mapper= new ObjectMapper();
+		String str = mapper.writeValueAsString(loyaltyCard);
+		
+        mockMvc.perform(MockMvcRequestBuilders.post("/loyalty/card")
+        		.contentType(MediaType.APPLICATION_JSON)
+        		.content(str))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 //                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
 //                .andReturn();
