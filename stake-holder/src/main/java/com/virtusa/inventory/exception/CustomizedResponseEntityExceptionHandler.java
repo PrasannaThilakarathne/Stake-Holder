@@ -32,19 +32,22 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		ErrorDetail errorDetail = new ErrorDetail(new Date(),"Validation Failed" ,ex.getBindingResult().toString());
-		return new ResponseEntity(errorDetail,HttpStatus.BAD_REQUEST);
-	}
-	@ExceptionHandler(CustomerNotFoundException.class)
-	public final ResponseEntity<Object> handleCustomerNotFoundException(CustomerNotFoundException ex,WebRequest request){
-		
-		ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity(errorDetail,HttpStatus.NOT_FOUND);
+		ErrorDetail errorDetail = new ErrorDetail(new Date(), "Validation Failed", ex.getBindingResult().toString());
+		return new ResponseEntity(errorDetail, HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler(CustomerNotFoundException.class)
+	public final ResponseEntity<Object> handleCustomerNotFoundException(CustomerNotFoundException ex,
+			WebRequest request) {
+
+		ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity(errorDetail, HttpStatus.NOT_FOUND);
+	}
 	
-	
-	
-	
-	
+	protected ResponseEntity<Object> handlMethodNotValid(MethodArgumentNotValidException ex, 
+			HttpHeaders headers, HttpStatus httpStatus, WebRequest request){
+		ErrorDetail errorDetail = new ErrorDetail(new Date(), "Validation Failed111", ex.getBindingResult().toString());
+		return new ResponseEntity(errorDetail, HttpStatus.BAD_REQUEST);
+	}
+
 }
