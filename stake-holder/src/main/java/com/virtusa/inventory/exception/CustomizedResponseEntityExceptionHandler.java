@@ -49,16 +49,21 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		ErrorDetail errorDetail = new ErrorDetail(new Date(), "Validation Failed", ex.getBindingResult().toString());
 		return new ResponseEntity(errorDetail, HttpStatus.BAD_REQUEST);
 	}
+
+	@ExceptionHandler(AddressNotFoundException.class)
+	public final ResponseEntity<Object> handleAddressNotFoundException(AddressNotFoundException ex, WebRequest request){
+		ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity(errorDetail, HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(TelephoneNotFoundException.class)
+	public final ResponseEntity<Object> handleTelephoneNotFoundException(TelephoneNotFoundException ex, WebRequest request){
+		ErrorDetail erroDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity(erroDetail, HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(CustomerNotFoundException.class)
 	public final ResponseEntity<Object> handleCustomerNotFoundException(CustomerNotFoundException ex,WebRequest request){
-		
 		ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity(errorDetail,HttpStatus.NOT_FOUND);
 	}
-
-	
-	
-	
-	
-	
 }
