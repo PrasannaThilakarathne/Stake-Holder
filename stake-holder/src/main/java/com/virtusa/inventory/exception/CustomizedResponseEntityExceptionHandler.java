@@ -29,6 +29,20 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity(errorDetail, HttpStatus.NOT_FOUND);
 	}
 
+	@ExceptionHandler(CategoryDoesNotExistException.class)
+	public final ResponseEntity<Object> handleCategoryNotFoundException(CategoryDoesNotExistException ex,
+			WebRequest request) {
+		ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity(errorDetail, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(CategoryAlreadyExistException.class)
+	public final ResponseEntity<Object> handleCategoryAlreadyExistException(CategoryAlreadyExistException ex,
+			WebRequest request) {
+		ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity(errorDetail, HttpStatus.NOT_MODIFIED);
+	}
+
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
