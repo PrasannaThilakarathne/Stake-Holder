@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtusa.inventory.exception.CustomerNotFoundException;
 import com.virtusa.inventory.modal.Customer;
 import com.virtusa.inventory.modal.LoyaltyCard;
 import com.virtusa.inventory.service.CustomerService;
@@ -39,6 +40,7 @@ public class CustomerController {
 			@Valid @RequestBody LoyaltyCard loyaltyCard) {
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
 		if (optionalCustomer.isPresent()) {
+			throw new CustomerNotFoundException("id"+ id);
 
 		}
 		Customer customerUpdated = optionalCustomer.get();
@@ -56,7 +58,8 @@ public class CustomerController {
 
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
 		if (!optionalCustomer.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new CustomerNotFoundException("id"+ id);
+			//return ResponseEntity.notFound().build();
 		}
 		customer.setId(id);
 		return ResponseEntity.ok(customerService.save(customer));
