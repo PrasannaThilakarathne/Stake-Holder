@@ -29,9 +29,6 @@ public class CustomerController {
 
 	@RequestMapping(value = "/details", method = RequestMethod.POST)
 	public ResponseEntity<Customer> save(@Valid @RequestBody Customer customer) {
-		if (customer == null) {
-			System.out.println("customer is nulll");
-		}
 		return ResponseEntity.ok(customerService.save(customer));
 	}
 
@@ -40,7 +37,7 @@ public class CustomerController {
 			@Valid @RequestBody LoyaltyCard loyaltyCard) {
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
 		if (optionalCustomer.isPresent()) {
-			throw new CustomerNotFoundException("id"+ id);
+			throw new CustomerNotFoundException("customer is not avilable for Id-"+id);
 
 		}
 		Customer customerUpdated = optionalCustomer.get();
@@ -58,7 +55,7 @@ public class CustomerController {
 
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
 		if (!optionalCustomer.isPresent()) {
-			throw new CustomerNotFoundException("id"+ id);
+			throw new CustomerNotFoundException("Customer not found for this Id- "+id);
 			//return ResponseEntity.notFound().build();
 		}
 		customer.setId(id);
