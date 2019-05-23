@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,13 +17,18 @@ public class Telephone {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String number;
-	String type;
+	private Integer id;
+
+	@NotNull(message = "Phone number can't be empty")
+	@Size(min = 10, max = 10)
+	private String number;
+
+	@NotNull(message = "Type can't be empty")
+	private String type;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn
-	@JsonIgnore
+	@JoinColumn(name = "customer_id", referencedColumnName = "id")
+//	@JsonIgnore
 	Customer customer;
 
 	public Integer getId() {
