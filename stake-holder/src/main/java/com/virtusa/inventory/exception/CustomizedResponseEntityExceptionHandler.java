@@ -40,7 +40,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	public final ResponseEntity<Object> handleCategoryAlreadyExistException(CategoryAlreadyExistException ex,
 			WebRequest request) {
 		ErrorDetail errorDetail = new ErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity(errorDetail, HttpStatus.NOT_MODIFIED);
+		return new ResponseEntity(errorDetail, HttpStatus.BAD_REQUEST);
 	}
 
 	@Override
