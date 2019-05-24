@@ -46,13 +46,11 @@ public class LoyaltyCard {
 	private Customer cutomer;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-<<<<<<< HEAD
 	@JoinColumn
 	@JsonIgnore
-=======
+
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	// @JsonIgnore
->>>>>>> 835f9c64f67792ac4cc4043987b9505f51111302
+	
 	Category category;
 
 	public String getName() {
