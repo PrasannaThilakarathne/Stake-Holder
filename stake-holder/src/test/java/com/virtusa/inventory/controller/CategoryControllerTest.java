@@ -69,5 +69,10 @@ public class CategoryControllerTest {
 				.content(categoryAsString))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
+	
+	@Test
+	public void test() {
+		
+	}
 
 }

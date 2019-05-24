@@ -39,13 +39,13 @@ public class CategoryController {
 		for (Category item : categoryTable) {
 			if (item.getType().equals(category.getType().toLowerCase())) {
 				matched = true;
+				break;
 			} else {
 				matched = false;
 			}
 		}
 
 		if (category.getType() != null && matched == false) {
-			System.out.println("Did not ");
 			Category newCategory = new Category();
 			newCategory.setId(category.getId());
 			newCategory.setPointRange(category.getPointRange());
@@ -65,23 +65,25 @@ public class CategoryController {
 
 		List<Category> categoryTable = categoryService.fetchAll();
 		for (Category item : categoryTable) {
-			if (item.getId().equals(category.getId())) {
+			if (item.getId().equals(id)) {
 				matched = true;
+				break;
 			} else {
 				matched = false;
 			}
 		}
 
-		if (category.getType() != null || matched == true) {
+		if (category.getType() != null && matched == true) {
 
 			Category newCategory = new Category();
-			newCategory.setId(category.getId());
+			newCategory.setId(id);
 			newCategory.setPointRange(category.getPointRange());
 			newCategory.setType(category.getType().toLowerCase());
 
-			return ResponseEntity.ok(categoryService.save(newCategory));
+			return ResponseEntity.ok(categoryService.update(newCategory));
+
 		} else {
-			throw new CategoryDoesNotExistException("id-" + id);
+			throw new CategoryDoesNotExistException("Couldn't update - No category exists under category id : " + id);
 		}
 	}
 
