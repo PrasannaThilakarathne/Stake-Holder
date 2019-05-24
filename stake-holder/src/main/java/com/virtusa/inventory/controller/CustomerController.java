@@ -37,7 +37,7 @@ public class CustomerController {
 	public ResponseEntity<Customer> createLoyalty(@PathVariable Integer id,
 			@Valid @RequestBody LoyaltyCard loyaltyCard) {
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
-		if (optionalCustomer.isPresent()) {
+		if (!optionalCustomer.isPresent()) {
 			throw new CustomerNotFoundException("customer is not avilable for Id-" + id);
 
 		}
@@ -51,7 +51,7 @@ public class CustomerController {
 			@Valid @RequestBody Category category) {
 		
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
-		if (optionalCustomer.isPresent()) {
+		if (!optionalCustomer.isPresent()) {
 			throw new CustomerNotFoundException("customer is not avilable for Id-" + id);
 
 		}
