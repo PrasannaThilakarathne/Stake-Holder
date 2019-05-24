@@ -1,6 +1,6 @@
 package com.virtusa.inventory.controller;
 
-import java.security.PublicKey;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.inventory.exception.CustomerNotFoundException;
+import com.virtusa.inventory.modal.Category;
 import com.virtusa.inventory.modal.Customer;
 import com.virtusa.inventory.modal.LoyaltyCard;
 import com.virtusa.inventory.service.CustomerService;
@@ -37,11 +38,25 @@ public class CustomerController {
 			@Valid @RequestBody LoyaltyCard loyaltyCard) {
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
 		if (optionalCustomer.isPresent()) {
-			throw new CustomerNotFoundException("customer is not avilable for Id-"+id);
+			throw new CustomerNotFoundException("customer is not avilable for Id-" + id);
 
 		}
 		Customer customerUpdated = optionalCustomer.get();
 		customerUpdated.setCard(loyaltyCard);
+		return ResponseEntity.ok(customerService.save(customerUpdated));
+	}
+
+	@RequestMapping(value = "/details/{id}/loyalty/category", method = RequestMethod.POST)
+	public ResponseEntity<Customer> createCustomerLoyaltyCategory(@PathVariable Integer id,
+			@Valid @RequestBody Category category) {
+		
+		Optional<Customer> optionalCustomer = customerService.findOne(id);
+		if (optionalCustomer.isPresent()) {
+			throw new CustomerNotFoundException("customer is not avilable for Id-" + id);
+
+		}
+		Customer customerUpdated = optionalCustomer.get();
+		customerUpdated.getCard().setCategory(category);
 		return ResponseEntity.ok(customerService.save(customerUpdated));
 	}
 
@@ -55,8 +70,8 @@ public class CustomerController {
 
 		Optional<Customer> optionalCustomer = customerService.findOne(id);
 		if (!optionalCustomer.isPresent()) {
-			throw new CustomerNotFoundException("Customer not found for this Id- "+id);
-			//return ResponseEntity.notFound().build();
+			throw new CustomerNotFoundException("Customer not found for this Id- " + id);
+			// return ResponseEntity.notFound().build();
 		}
 		customer.setId(id);
 		return ResponseEntity.ok(customerService.save(customer));

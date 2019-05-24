@@ -14,8 +14,9 @@ import com.virtusa.inventory.repository.CustomerRepository;
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	CustomerRepository customerRepository;
+	private CustomerRepository customerRepository;
 
+	@Override
 	public Customer save(Customer customer) {
 		if (customer.getTelephone() != null) {
 			for (Telephone telephone : customer.getTelephone()) {
@@ -27,14 +28,17 @@ public class CustomerServiceImpl implements CustomerService {
 
 	}
 
+	@Override
 	public List<Customer> fetchAll() {
 		return customerRepository.findAll();
 	}
 
+	@Override
 	public Optional<Customer> findOne(Integer id) {
 		return customerRepository.findById(id);
 	}
 
+	@Override
 	public void deleteCustomer(Integer id) {
 		customerRepository.deleteById(id);
 	}

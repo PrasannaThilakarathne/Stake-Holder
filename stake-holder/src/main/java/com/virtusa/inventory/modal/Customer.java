@@ -24,7 +24,7 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "Gender must notNOT_BE_NULL  be empty")
+	@NotNull(message = "Gender must not be empty")
 	private String gender;
 
 	private String occupation;
@@ -48,16 +48,17 @@ public class Customer {
 	@Email(message = "Email is invalid")
 //	@Column(unique = true)
 	private String email;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
-	Address address;
+	private Address address;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id", referencedColumnName = "id")
-	LoyaltyCard card;
+	private LoyaltyCard card;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	List<Telephone> telephone;
+	private List<Telephone> telephone;
 
 	public Integer getId() {
 		return id;
@@ -99,20 +100,20 @@ public class Customer {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getfName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setfName(String fName) {
-		this.firstName = fName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getlName() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setlName(String lName) {
-		this.lastName = lName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -127,7 +128,7 @@ public class Customer {
 		return address;
 	}
 
-	public void setAddress(Address a_NOT_BE_NULLddress) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

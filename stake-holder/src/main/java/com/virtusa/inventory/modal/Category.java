@@ -53,8 +53,8 @@ public class Category {
 		return pointRange;
 	}
 
-	public void setPointRange(Integer pointCoverage) {
-		this.pointRange = pointCoverage;
+	public void setPointRange(Integer pointRange) {
+		this.pointRange = pointRange;
 	}
 
 	public List<LoyaltyCard> getLoyalitycard() {

@@ -3,6 +3,7 @@ package com.virtusa.inventory.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.virtusa.inventory.modal.Telephone;
@@ -11,7 +12,8 @@ import com.virtusa.inventory.repository.TelephoneRepository;
 @Service
 public class TelephoneServiceImpl implements TelephoneService {
 
-	TelephoneRepository telephoneRepository;
+	@Autowired
+	private TelephoneRepository telephoneRepository;
 
 	@Override
 	public List<Telephone> fetchAll() {

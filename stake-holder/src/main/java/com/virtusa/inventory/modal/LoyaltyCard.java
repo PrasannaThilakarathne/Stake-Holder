@@ -47,8 +47,8 @@ public class LoyaltyCard {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	// @JsonIgnore
-	Category category;
+	@JsonIgnore
+	private Category category;
 
 	public String getName() {
 		return name;
