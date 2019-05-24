@@ -1,5 +1,7 @@
 package com.virtusa.inventory.controller;
 
+import java.util.Date;
+
 import org.hibernate.query.criteria.internal.expression.SearchedCaseExpression.WhenClause;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.virtusa.inventory.modal.Address;
+import com.virtusa.inventory.modal.Category;
+import com.virtusa.inventory.modal.Customer;
+import com.virtusa.inventory.modal.LoyaltyCard;
 import com.virtusa.inventory.repository.CustomerRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,16 +30,37 @@ public class CustomerControllerTest {
 
 	@MockBean
 	CustomerController customerController;
-	
 
 	@Test
-	public void testIsOk() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/details")).andExpect(MockMvcResultMatchers.status().isOk());
+	public void testCustomerIsOk() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/details")).
+		andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
-	public void testNotFound() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/detail")).andExpect(MockMvcResultMatchers.status().isNotFound());
+	public void testCustomerNotFound() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/detail")).
+		andExpect(MockMvcResultMatchers.status().isNotFound());
 
+	}
+
+	@Test
+	public void testCustomerPostStatusIsOk() throws Exception {
+
+		Customer customer = new Customer();
+		customer.setfName("saman");
+		customer.setlName("gunarathne");
+		customer.setDateOfBirth(new Date());
+		customer.setGender("Male");
+		customer.setOccupation("business");
+		customer.setSalutation("Mr");
+		customer.setEmail("saman@virtusa.com");
+		
+
+		ObjectMapper mapper = new ObjectMapper();
+		String customerJson = mapper.writeValueAsString(customer);
+
+		mockMvc.perform(MockMvcRequestBuilders.post("/details/{id}/loyalty").contentType(MediaType.APPLICATION_JSON)
+				.content(customerJson)).andExpect(MockMvcResultMatchers.status().isOk());
 	}
 }
