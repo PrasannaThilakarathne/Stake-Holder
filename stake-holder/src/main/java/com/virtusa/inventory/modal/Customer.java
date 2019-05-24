@@ -24,7 +24,7 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "Gender must notNOT_BE_NULL  be empty")
+	@NotNull(message = "Gender must not be empty")
 	private String gender;
 
 	private String occupation;
@@ -127,7 +127,7 @@ public class Customer {
 		return address;
 	}
 
-	public void setAddress(Address a_NOT_BE_NULLddress) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
