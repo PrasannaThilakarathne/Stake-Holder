@@ -23,7 +23,7 @@ import com.virtusa.inventory.service.TelephoneService;
 public class TelephoneController {
 
 	@Autowired
-	private TelephoneService telephoneService;
+	TelephoneService telephoneService;
 
 	@RequestMapping(value = "/telephone", method = RequestMethod.GET)
 	public ResponseEntity<List<Telephone>> fetchAll() {
