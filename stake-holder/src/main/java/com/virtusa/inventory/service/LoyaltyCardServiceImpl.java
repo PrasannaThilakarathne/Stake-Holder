@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.virtusa.inventory.exception.LoyaltyCardNotFoundException;
 import com.virtusa.inventory.modal.LoyaltyCard;
 import com.virtusa.inventory.repository.LoyaltyCardRepository;
 

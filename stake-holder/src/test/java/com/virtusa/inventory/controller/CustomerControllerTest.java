@@ -48,8 +48,8 @@ public class CustomerControllerTest {
 	public void testCustomerPostStatusIsOk() throws Exception {
 
 		Customer customer = new Customer();
-		customer.setfName("saman");
-		customer.setlName("gunarathne");
+		customer.setFirstName("saman");
+		customer.setLastName("gunarathne");
 		customer.setDateOfBirth(new Date());
 		customer.setGender("Male");
 		customer.setOccupation("business");

@@ -3,12 +3,9 @@ package com.virtusa.inventory.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-import com.virtusa.inventory.exception.CategoryAlreadyExistException;
+
 import com.virtusa.inventory.modal.Category;
 import com.virtusa.inventory.repository.CategoryRepository;
 
