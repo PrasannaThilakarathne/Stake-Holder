@@ -64,7 +64,11 @@ public class CustomerController {
 	public ResponseEntity<List<Customer>> fetchAll() {
 		return ResponseEntity.ok(customerService.fetchAll());
 	}
-
+	
+	@RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Optional<Customer>> fetchCustomer(@PathVariable Integer id) {
+		return ResponseEntity.ok(customerService.fetchCustomer(id));
+	}
 	@RequestMapping(value = "/details/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Customer> update(@Valid @PathVariable Integer id, @RequestBody Customer customer) {
 
